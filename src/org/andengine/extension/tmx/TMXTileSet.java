@@ -135,7 +135,7 @@ public class TMXTileSet implements TMXConstants {
 			}
 		} else {
 			final AssetBitmapTextureAtlasSource assetBitmapTextureAtlasSource = AssetBitmapTextureAtlasSource.create(pAssetManager, this.mImageSource);
-			final BitmapTextureAtlas bitmapTextureAtlas = new BitmapTextureAtlas(assetBitmapTextureAtlasSource.getTextureWidth(), assetBitmapTextureAtlasSource.getTextureHeight(), BitmapTextureFormat.RGBA_8888, this.mTextureOptions); // TODO Make TextureFormat variable
+		final BitmapTextureAtlas bitmapTextureAtlas = new BitmapTextureAtlas(pTextureManager, assetBitmapTextureAtlasSource.getTextureWidth(), assetBitmapTextureAtlasSource.getTextureHeight(), BitmapTextureFormat.RGBA_8888, this.mTextureOptions); // TODO Make TextureFormat variable
 
 			final String transparentColor = SAXUtils.getAttribute(pAttributes, TMXConstants.TAG_IMAGE_ATTRIBUTE_TRANS, null);
 			if(transparentColor == null) {
@@ -149,7 +149,7 @@ public class TMXTileSet implements TMXConstants {
 				}
 			}
 			this.mTexture = bitmapTextureAtlas;
-			this.mTexture.load(pTextureManager);
+		this.mTexture.load();
 		}
 
 		this.mTilesHorizontal = TMXTileSet.determineCount(mTexture.getWidth(), this.mTileWidth, this.mMargin, this.mSpacing);
