@@ -271,8 +271,7 @@ public class TMXLayer extends SpriteBatch implements TMXConstants {
 				super.initBlendFunction(this.mTexture);
 			} else {
 				if (this.mTexture != tmxTileTextureRegion.getTexture()) {
-				throw new AndEngineRuntimeException("All TMXTiles in a TMXLayer need to be in the same TMXTileSet.");
-							+ mName + ") need to be in the same TMXTileSet.");
+					throw new AndEngineRuntimeException("All TMXTiles in a TMXLayer need to be in the same TMXTileSet.");
 				}
 			}
 		}
@@ -281,7 +280,7 @@ public class TMXLayer extends SpriteBatch implements TMXConstants {
 
 		if (pGlobalTileID != 0) {
 			this.setIndex(this.getSpriteBatchIndex(column, row));
-			this.drawWithoutChecks(tmxTileTextureRegion, tmxTile.getTileX(), tmxTile.getTileY(), tileWidth, tileHeight, Color.WHITE_PACKED);
+			this.drawWithoutChecks(tmxTileTextureRegion, tmxTile.getTileX(), tmxTile.getTileY(), tileWidth, tileHeight, Color.WHITE_ABGR_PACKED_FLOAT);
 			this.submit(); // TODO Doesn't need to be called here, but should rather be called in a "init" step, when parsing the XML is complete.
 
 			/* Notify the ITMXTilePropertiesListener if it exists. */

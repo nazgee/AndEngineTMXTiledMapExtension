@@ -117,13 +117,13 @@ public class TMXTileSet implements TMXConstants {
 
 		if (useETC1) {
 			try {
-				this.mTexture = new ETC1Texture(TextureOptions.BILINEAR) {
+				this.mTexture = new ETC1Texture(pTextureManager, TextureOptions.BILINEAR) {
 					@Override
 					protected InputStream getInputStream() throws IOException {
 						return pAssetManager.open(mImageSource);
 					}
 				};
-				mTexture.load(pTextureManager);
+				mTexture.load();
 			} catch (IOException e) {
 				e.printStackTrace();
 				throw new RuntimeException("ETC1 asset loading failed!");
